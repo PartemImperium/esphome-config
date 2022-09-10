@@ -1,5 +1,9 @@
 substitutions:
   ota_password: password
+  api_password: password
+  # !!!IMPORTANT PROVIDE A VALUE FOR API ENCRYPTION. ENCRYPTION ISNT VERY USEFUL IF THE KEY IS PUBLIC!!!
+  # To create a key follow the instructions here https://esphome.io/components/api.html?highlight=api#configuration-variables
+  api_encryption: Am3/h7ylK5LGjJcbPobxzH6YiezwEAEZ6UdMMLbVloI=
 
 ota:
   safe_mode: true
@@ -8,4 +12,8 @@ ota:
 web_server:
   port: 80
   version: 2
-  
+
+api:
+  password: ${api_password}
+  encryption:
+    key: ${api_encryption}
