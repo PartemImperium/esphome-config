@@ -1,0 +1,8 @@
+substitutions:
+  wifi_password: password
+  wifi_ssid: "Wi-Fi ssid"
+
+wifi:
+  ssid: ${wifi_ssid}
+  password: ${wifi_password}
+  fast_connect: true
