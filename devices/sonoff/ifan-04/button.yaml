@@ -1,7 +1,98 @@
+substitutions:
+  name: fan
+  
 binary_sensor:
   - platform: gpio
     id: button_light
     pin: GPIO0
-    on_press:
-      then:
-        - light.toggle: fan_light
+    filters:
+      - invert:
+      - delayed_on: 30ms
+      - delayed_off: 30ms
+    on_multi_click:
+      - timing:
+          - ON for 40ms to 400ms
+          - OFF for at least 330ms
+        then:
+          - homeassistant.event:
+              event: esphome.${name}.button_pressed
+              data:
+                num_click: "1"
+                action: click
+      - timing:
+          # One
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Two
+          - ON for 40ms to 400ms
+          - OFF for at least 330ms
+        then:
+          - homeassistant.event:
+              event: esphome.${name}.button_pressed
+              data:
+                num_click: "2"
+                action: click
+      - timing:
+          # One
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Two
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Three
+          - ON for 40ms to 400ms
+          - OFF for at least 50ms
+        then:
+          - homeassistant.event:
+              event: esphome.${name}.button_pressed
+              data:
+                num_click: "3"
+                action: click
+      - timing:
+          # One
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Two
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Three
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Four
+          - ON for 40ms to 400ms
+          - OFF for at least 50ms
+        then:
+          - homeassistant.event:
+              event: esphome.${name}.button_pressed
+              data:
+                num_click: "4"
+                action: click
+      - timing:
+          # One
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Two
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Three
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Four
+          - ON for 40ms to 400ms
+          - OFF for 40ms to 300ms
+          # Five
+          - ON for 40ms to 400ms
+          - OFF for at least 50ms
+        then:
+          - homeassistant.event:
+              event: esphome.${name}.button_pressed
+              data:
+                num_click: "5"
+                action: click
+      - timing:
+          - ON for at least 2s
+        then:
+          - homeassistant.event:
+              event: esphome.${name}.button_pressed
+              data:
+                action: hold
