@@ -12,30 +12,8 @@ esphome:
 esp8266:
   board: esp01_1m
 
-# Disable logging on serial as it is used by the remote
-logger:
-  baud_rate: 0
-
-#ifan04:
-#  on_fan:
-#    - lambda: |-
-#          auto call = speed ? id (the_fan).turn_on() :  id (the_fan).turn_off();
-#          call.set_speed(speed);
-#          call.perform();
-#  on_light:
-#    - light.toggle: fan_light
-ifan04:
-  on_fan:
-    - lambda: ESP_LOGD("IFAN", "speed is %d", speed);
-  on_light:
-    - lambda: ESP_LOGD("IFAN", "light trigger");
-  on_buzzer:
-    - lambda: ESP_LOGD("IFAN", "buzzer trigger");
-
-uart:
-  tx_pin: GPIO01
-  rx_pin: GPIO03
-  baud_rate: 9600
+packages:
+  remote: !include remote.yaml
 
 binary_sensor:
   - platform: gpio
