@@ -13,48 +13,8 @@ esp8266:
   board: esp01_1m
 
 packages:
-  remote: !include remote.yaml
-
-binary_sensor:
-  - platform: gpio
-    id: button_light
-    pin: GPIO0
-    on_press:
-      then:
-        - light.toggle: fan_light
-
-
-output:
-  - platform: esp8266_pwm
-    id: led_pin
-    pin: GPIO13
-    inverted: true
-
-light:
-  - platform: ifan
-    id: fan_light
-    name: "${friendly_name} Light"
-  - platform: monochromatic
-    id: led1
-    output: led_pin
-    default_transition_length: 0s
-    restore_mode: always off
-
-button:
-  - platform: template
-    name: ${friendly_name} Cycle Fan
-    on_press:
-      then:
-        - fan.cycle_speed: the_fan
-fan:
-  - platform: ifan
-    id: the_fan
-    name: "${friendly_name} Fan"
-    remote_enable: false  
-    buzzer_enable: true
-
-api:
-  services:
-    - service: fan_cycle
-      then:
-        - fan.cycle_speed: the_fan
+  remote:       !include remote.yaml
+  fan:          !include  fan.yaml
+  light:        !include light.yaml
+  module_light: !include module_light.yaml
+  button:       !include button.yaml

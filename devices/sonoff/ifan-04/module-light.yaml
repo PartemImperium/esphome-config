@@ -1,0 +1,12 @@
+output:
+  - platform: esp8266_pwm
+    id: led_pin
+    pin: GPIO13
+    inverted: true
+
+light:
+  - platform: monochromatic
+    id: led1
+    output: led_pin
+    default_transition_length: 0s
+    restore_mode: always off

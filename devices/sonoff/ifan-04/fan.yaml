@@ -1,0 +1,21 @@
+substitutions:
+  friendly_name: Test Fan
+
+button:
+  - platform: template
+    name: ${friendly_name} Cycle Fan
+    on_press:
+      then:
+        - fan.cycle_speed: the_fan
+fan:
+  - platform: ifan
+    id: the_fan
+    name: "${friendly_name} Fan"
+    remote_enable: false  
+    buzzer_enable: true
+
+api:
+  services:
+    - service: fan_cycle
+      then:
+        - fan.cycle_speed: the_fan

@@ -1,0 +1,7 @@
+substitutions:
+  friendly_name: Test Fan
+
+light:
+  - platform: ifan
+    id: fan_light
+    name: "${friendly_name} Light"

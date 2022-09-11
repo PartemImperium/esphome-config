@@ -1,0 +1,7 @@
+binary_sensor:
+  - platform: gpio
+    id: button_light
+    pin: GPIO0
+    on_press:
+      then:
+        - light.toggle: fan_light
