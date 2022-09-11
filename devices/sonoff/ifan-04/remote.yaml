@@ -12,11 +12,11 @@ logger:
 #    - light.toggle: fan_light
 ifan04:
   on_fan:
-    - lambda: ESP_LOGD("IFAN", "speed is %d", speed);
+    - lambda: ESP_LOGD("IFAN04", "speed is %d", speed);
   on_light:
-    - lambda: ESP_LOGD("IFAN", "light trigger");
+    - lambda: ESP_LOGD("IFAN04", "light trigger");
   on_buzzer:
-    - lambda: ESP_LOGD("IFAN", "buzzer trigger");
+    - lambda: ESP_LOGD("IFAN04", "buzzer trigger");
 
 uart:
   tx_pin: GPIO01
