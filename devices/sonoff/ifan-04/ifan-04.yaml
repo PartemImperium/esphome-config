@@ -5,7 +5,6 @@ external_components:
   - source: github://cpyarger/custom_components@master
     refresh: 0s
 
-    
 esphome:
   comment: Sonoff iFan04-L
 
