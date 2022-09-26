@@ -13,7 +13,7 @@ fan:
     id: the_fan
     name: "${friendly_name} Fan"
     remote_enable: false  
-    buzzer_enable: ${buzzer_enable}
+    buzzer_enable: "${buzzer_enable}"
 
 api:
   services:
