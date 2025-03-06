@@ -5,8 +5,9 @@ substitutions:
   api_encryption: Am3/h7ylK5LGjJcbPobxzH6YiezwEAEZ6UdMMLbVloI=
 
 ota:
-  safe_mode: true
-  password: ${ota_password}
+  - platform: esphome
+    safe_mode: true
+    password: ${ota_password}
 
 web_server:
   port: 80
