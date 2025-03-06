@@ -2,7 +2,7 @@ substitutions:
   friendly_name: Test Fan
 
 external_components:
-  - source: github://cpyarger/custom_components@master
+  - source: github://PartemImperium/esphome_custom_components@master
     refresh: 0s
 
 esphome:
