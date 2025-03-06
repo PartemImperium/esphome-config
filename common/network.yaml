@@ -5,9 +5,13 @@ substitutions:
   api_encryption: Am3/h7ylK5LGjJcbPobxzH6YiezwEAEZ6UdMMLbVloI=
 
 ota:
-  - platform: esphome
-    safe_mode: true
-    password: ${ota_password}
+  password: ${ota_password}
+
+safe_mode:
+  disabled: false
+  boot_is_good_after: '1min'
+  num_attempts: 10
+  reboot_timeout: '5min'
 
 web_server:
   port: 80
