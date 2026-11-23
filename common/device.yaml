@@ -1,0 +1,10 @@
+text_sensor:
+  - platform: version
+    name: 'ESPHome Version'
+    entity_category: diagnostic
+
+sensor:
+  - platform: uptime
+    name: 'Uptime'
+    entity_category: diagnostic
+    unit_of_measurement: s
