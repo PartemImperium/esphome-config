@@ -64,7 +64,6 @@ fan:
     id: fan_comp
     output: fan_relays
     speed_count: 3
-    device_id: fan_device
 
 switch:
   - platform: template

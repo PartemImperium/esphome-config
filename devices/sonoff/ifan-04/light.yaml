@@ -10,7 +10,6 @@ light:
     name: 'Light'
     id: light_comp
     output: light_relay
-    device_id: light_device
 
 switch:
   - platform: template
