@@ -1,7 +1,21 @@
-substitutions:
-  friendly_name: Test Fan
+output:
+  - platform: gpio
+    id: light_relay
+    pin:
+      number: GPIO09
+      inverted: true
 
 light:
-  - platform: ifan
-    id: fan_light
-    name: "${friendly_name} Light"
+  - platform: binary
+    name: 'Light'
+    id: light_comp
+    output: light_relay
+    device_id: light_device
+
+switch:
+  - platform: template
+    name: 'Light enabled'
+    id: light_enabled
+    entity_category: config
+    optimistic: True
+    restore_mode: RESTORE_DEFAULT_ON

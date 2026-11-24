@@ -1,19 +1,50 @@
-substitutions:
-  friendly_name: Test Fan
-
-external_components:
-  - source: github://PartemImperium/esphome_custom_components@master
-    refresh: 0s
-
 esphome:
   comment: Sonoff iFan04-L
+  project:
+    name: "PartemImperium.iFan04"
+    version: "2.0.0"
+  devices:
+    - id: light_device
+      name: Light
+      relation: child
+    - id: fan_device
+      name: Fan
+      relation: child
 
 esp8266:
-  board: esp01_1m
+  board: esp8285
+  framework:
+    version: latest
+  early_pin_init: false
+  restore_from_flash: true
+
+preferences:
+  flash_write_interval: 5min
+
+# GPIO00 ... Button
+# GPIO01 ... UART0 TX
+# GPIO03 ... UART0 RX (RF Remote Control)
+# GPIO04 ... I2C SDA (TP11 D_RX on PCB backside)
+# GPIO05 ... I2C SCL (TP10 D_TX on PCB backside)
+# GPIO09 ... Light Relay (D)
+# GPIO10 ... Buzzer
+# GPIO12 ... Fan Relay 2 (D11, 3uF cap on IFAN04-H)
+# GPIO13 ... LED
+# GPIO14 ... Fan Relay 1 (D5, 2.5uF cap on IFAN04-H)
+# GPIO15 ... Fan Relay 3 (D13, no cap)
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+binary_sensor:
+  - platform: gpio
+    name: "Button"
+    pin:
+      number: GPIO00
+      inverted: true
 
 packages:
-  remote: !include remote.yaml
   fan: !include  fan.yaml
   light: !include light.yaml
-  module_light: !include module_light.yaml
-  button: !include button.yaml
