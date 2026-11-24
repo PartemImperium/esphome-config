@@ -1,3 +1,5 @@
+# Trimmed down version of https://github.com/rh1rich/esphome-ifan04/tree/main
+
 esphome:
   comment: Sonoff iFan04-L
   project:
